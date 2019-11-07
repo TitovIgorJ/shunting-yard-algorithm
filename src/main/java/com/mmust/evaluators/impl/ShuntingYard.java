@@ -26,7 +26,7 @@ class ShuntingYard {
 			if (type == TokenType.NUMBER) {
 				outputQueue.add(token);
 			} else if (type == TokenType.FUNCTION) {
-				operatorStack.add(token);
+				operatorStack.push(token);
 			} else if (type == TokenType.OPERATOR) {
 				Operator op = (Operator) token;
 				while (

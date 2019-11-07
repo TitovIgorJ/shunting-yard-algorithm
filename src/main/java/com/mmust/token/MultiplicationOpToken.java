@@ -1,8 +1,8 @@
 package com.mmust.token;
 
-public class MultiplicationOp extends OperatorToken {
+public class MultiplicationOpToken extends OperatorToken {
 
-	public MultiplicationOp() {
+	public MultiplicationOpToken() {
 		super("*");
 	}
 

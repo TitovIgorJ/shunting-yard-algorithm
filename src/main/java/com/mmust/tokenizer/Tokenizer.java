@@ -27,7 +27,7 @@ public class Tokenizer implements Iterable<Token> {
 		} else if (c == '-') {
 			token = new SubtractOpToken();
 		} else if (c == '*') {
-			token = new MultiplicationOp();
+			token = new MultiplicationOpToken();
 		} else if (c == '/') {
 			token = new DivisionOpToken();
 		} else {

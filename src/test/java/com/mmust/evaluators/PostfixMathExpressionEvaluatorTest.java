@@ -53,7 +53,7 @@ public class PostfixMathExpressionEvaluatorTest {
 		Iterable<Token> simplePostfixExpr = List.of(
 				new NumToken("3"),
 				new NumToken("4"),
-				new MultiplicationOp()
+				new MultiplicationOpToken()
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
@@ -84,7 +84,7 @@ public class PostfixMathExpressionEvaluatorTest {
 				new NumToken("3"),
 				new NumToken("4"),
 				new NumToken("5"),
-				new MultiplicationOp(),
+				new MultiplicationOpToken(),
 				new SubtractOpToken()
 		);
 

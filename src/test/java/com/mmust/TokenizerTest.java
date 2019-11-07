@@ -19,7 +19,7 @@ public class TokenizerTest {
 						new NumToken("4"),
 						new SubtractOpToken(),
 						new NumToken("5"),
-						new MultiplicationOp(),
+						new MultiplicationOpToken(),
 						new NumToken("2"),
 						new SubtractOpToken(),
 						new NumToken("9"),
@@ -36,7 +36,7 @@ public class TokenizerTest {
 				.hasSize(7)
 				.containsExactly(
 						new NumToken("3"),
-						new MultiplicationOp(),
+						new MultiplicationOpToken(),
 						Parenthesis.LEFT,
 						new NumToken("5"),
 						new SubtractOpToken(),
