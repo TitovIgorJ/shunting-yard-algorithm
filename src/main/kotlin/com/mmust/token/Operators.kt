@@ -11,9 +11,6 @@ enum class Operators(
     DIV("/", 3, Associativity.LEFT, { op1: Double, op2: Double -> op1 / op2 }),
     MULTIPLY("*", 3, Associativity.LEFT, { op1: Double, op2: Double -> op1 * op2 });
 
-    override val type: TokenType
-        get() = TokenType.OPERATOR
-
     override fun eval(op1: Double, op2: Double): Double {
         return evaluator.invoke(op1, op2)
     }

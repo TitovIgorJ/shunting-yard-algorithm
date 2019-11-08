@@ -1,8 +1,10 @@
 package com.mmust.evaluators.impl
 
 import com.mmust.evaluators.PostfixEvaluator
-import com.mmust.token.*
+import com.mmust.token.NumToken
 import com.mmust.token.Number
+import com.mmust.token.Operator
+import com.mmust.token.Token
 import java.util.*
 
 class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
@@ -11,16 +13,14 @@ class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
         val stack = LinkedList<Token>()
 
         for (t in postfixExpr) {
-            when (t.type) {
-                TokenType.NUMBER -> stack.push(t)
+            when (t) {
+                is Number -> stack.push(t)
 
-                TokenType.OPERATOR -> {
+                is Operator -> {
                     val op2 = stack.pop() as Number
                     val op1 = stack.pop() as Number
 
-                    val evaluator = t as Operator
-
-                    val result = evaluator.eval(op1.`val`(), op2.`val`())
+                    val result = t.eval(op1.`val`(), op2.`val`())
 
                     stack.push(NumToken(result))
                 }
