@@ -12,7 +12,7 @@ class TokenizerTest {
 
     @Test
     @DisplayName("Arithmetic Operators Only")
-    fun testArithmeticOperatorsOnly() {
+    fun arithmeticOperatorsOnly() {
         val tokenizer = Tokenizer("3+4-5*2-9/8")
 
         assertThat<Token>(tokenizer)
@@ -34,7 +34,7 @@ class TokenizerTest {
 
     @Test
     @DisplayName("With Parenthesis")
-    fun testWithParenthesis() {
+    fun withParenthesis() {
         val tokenizer = Tokenizer("3*(5-1)")
 
         assertThat<Token>(tokenizer)

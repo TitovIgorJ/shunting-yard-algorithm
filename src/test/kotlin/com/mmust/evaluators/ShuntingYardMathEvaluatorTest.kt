@@ -11,7 +11,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Simple Sum")
-    fun testSimpleSum() {
+    fun simpleSum() {
         val infixExpression = "3+5"
         val expectedResult = 8.0
 
@@ -24,7 +24,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Simple Subtraction")
-    fun testSimpleSubtraction() {
+    fun simpleSubtraction() {
         val infixExpression = "3-5"
         val expectedResult = -2.0
 
@@ -36,7 +36,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Few Operators")
-    fun testFewOperators() {
+    fun fewOperators() {
         val infixExpression = "3+8-6"
         val expectedResult = 5.0
 
@@ -48,7 +48,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Simple Parenthesis")
-    fun testSimpleParenthesis() {
+    fun simpleParenthesis() {
         val infixExpression = "(3-1)"
         val expectedResult = 2.0
 
@@ -60,7 +60,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Parenthesis")
-    fun testWithParenthesis() {
+    fun withParenthesis() {
         val infixExpression = "2*(3-1)"
         val expectedResult = 4.0
 
@@ -72,7 +72,7 @@ class ShuntingYardMathEvaluatorTest {
 
     @Test
     @DisplayName("Inner Parenthesis")
-    fun testWithInnerParenthesis() {
+    fun innerParenthesis() {
         val infixExpression = "2*(3-(2-1))"
         val expectedResult = 4.0
 

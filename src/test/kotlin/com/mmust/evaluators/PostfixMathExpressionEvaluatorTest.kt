@@ -13,7 +13,7 @@ class PostfixMathExpressionEvaluatorTest {
 
     @Test
     @DisplayName("+")
-    fun testAddition() {
+    fun addition() {
         val simplePostfixExpr = listOf(
                 NumToken("2"),
                 NumToken("3"),
@@ -29,7 +29,7 @@ class PostfixMathExpressionEvaluatorTest {
 
     @Test
     @DisplayName("-")
-    fun testSubtract() {
+    fun subtract() {
         val simplePostfixExpr = listOf(
                 NumToken("5"),
                 NumToken("2"),
@@ -45,7 +45,7 @@ class PostfixMathExpressionEvaluatorTest {
 
     @Test
     @DisplayName("*")
-    fun testMultiply() {
+    fun multiply() {
         val simplePostfixExpr = listOf(
                 NumToken("3"),
                 NumToken("4"),
@@ -61,7 +61,7 @@ class PostfixMathExpressionEvaluatorTest {
 
     @Test
     @DisplayName("/")
-    fun testDivide() {
+    fun divide() {
         val simplePostfixExpr = listOf(
                 NumToken("8"),
                 NumToken("4"),
@@ -77,7 +77,7 @@ class PostfixMathExpressionEvaluatorTest {
 
     @Test
     @DisplayName("Few operations")
-    fun testFewOps() {
+    fun fewOps() {
         val simplePostfixExpr = listOf(
                 NumToken("3"),
                 NumToken("4"),
