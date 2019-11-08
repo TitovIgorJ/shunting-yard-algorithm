@@ -49,7 +49,7 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
 
     private fun isLeftAssociativeAndEqualPriorityOpOnTop(op: Operator): Boolean {
         val top = operatorStack.peek()
-        if (top != null && top.type == TokenType.OPERATOR) {
+        if (top != null && top is Operator) {
             val topOp = top as Operator
             return topOp.associativity == Associativity.LEFT && op.precedence == topOp.precedence
         }
@@ -59,7 +59,7 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
     private fun isHigherPriorityOpOnTop(op: Operator): Boolean {
         if (!operatorStack.isEmpty()) {
             val top = operatorStack.peek()
-            if (top.type == TokenType.OPERATOR) {
+            if (top is Operator) {
                 val topOp = top as Operator
                 return topOp.precedence > op.precedence
             }
