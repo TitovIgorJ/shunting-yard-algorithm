@@ -20,7 +20,7 @@ class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
                     val op2 = stack.pop() as Number
                     val op1 = stack.pop() as Number
 
-                    val result = t.eval(op1.`val`(), op2.`val`())
+                    val result = t.eval(op1.doubleValue(), op2.doubleValue())
 
                     stack.push(NumToken(result))
                 }
@@ -29,6 +29,6 @@ class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
 
         val result = stack.pop() as Number
 
-        return result.`val`()
+        return result.doubleValue()
     }
 }
