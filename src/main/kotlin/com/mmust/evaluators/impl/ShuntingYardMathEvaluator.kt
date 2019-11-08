@@ -14,7 +14,7 @@ class ShuntingYardMathEvaluator : MathEvaluator {
         return postfixEvaluator.eval(postfixExpression)
     }
 
-    override fun invoke(expression: String): Double {
-        return eval(expression)
+    override fun invoke(infixExpression: String): Double {
+        return eval(infixExpression)
     }
 }

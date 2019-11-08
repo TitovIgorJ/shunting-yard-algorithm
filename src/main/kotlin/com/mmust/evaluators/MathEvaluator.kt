@@ -4,5 +4,5 @@ interface MathEvaluator {
 
     fun eval(infixExpression: String): Double
 
-    operator fun invoke(expression: String): Double
+    operator fun invoke(infixExpression: String): Double
 }

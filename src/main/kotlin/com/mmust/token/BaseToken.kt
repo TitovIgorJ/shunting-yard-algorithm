@@ -2,20 +2,22 @@ package com.mmust.token
 
 abstract class BaseToken internal constructor(override val rawValue: String) : Token {
 
-    override fun toString(): String {
-        return rawValue
-    }
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o == null || javaClass != o.javaClass) return false
+        other as BaseToken
 
-        val baseToken = o as BaseToken?
+        if (rawValue != other.rawValue) return false
 
-        return rawValue == baseToken!!.rawValue
+        return true
     }
 
     override fun hashCode(): Int {
         return rawValue.hashCode()
+    }
+
+    override fun toString(): String {
+        return rawValue
     }
 }
