@@ -1,7 +1,7 @@
 package com.mmust.tokenizer
 
+import com.mmust.token.ArithmeticOperators.*
 import com.mmust.token.NumToken
-import com.mmust.token.Operators.*
 import com.mmust.token.Parenthesis
 import com.mmust.token.Token
 import org.assertj.core.api.Assertions.assertThat
@@ -23,7 +23,7 @@ class TokenizerTest {
                         NumToken("4"),
                         MINUS,
                         NumToken("5"),
-                        MULTIPLY,
+                        TIMES,
                         NumToken("2"),
                         MINUS,
                         NumToken("9"),
@@ -41,7 +41,7 @@ class TokenizerTest {
                 .hasSize(7)
                 .containsExactly(
                         NumToken("3"),
-                        MULTIPLY,
+                        TIMES,
                         Parenthesis.LEFT,
                         NumToken("5"),
                         MINUS,

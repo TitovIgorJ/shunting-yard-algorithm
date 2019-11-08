@@ -1,8 +1,8 @@
 package com.mmust.evaluators
 
 import com.mmust.evaluators.impl.StackPostfixMathExpressionEvaluator
+import com.mmust.token.ArithmeticOperators.*
 import com.mmust.token.NumToken
-import com.mmust.token.Operators.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -49,7 +49,7 @@ class PostfixMathExpressionEvaluatorTest {
         val simplePostfixExpr = listOf(
                 NumToken("3"),
                 NumToken("4"),
-                MULTIPLY
+                TIMES
         )
 
         val actualResult = evaluator.eval(simplePostfixExpr)
@@ -82,7 +82,7 @@ class PostfixMathExpressionEvaluatorTest {
                 NumToken("3"),
                 NumToken("4"),
                 NumToken("5"),
-                MULTIPLY,
+                TIMES,
                 MINUS
         )
 

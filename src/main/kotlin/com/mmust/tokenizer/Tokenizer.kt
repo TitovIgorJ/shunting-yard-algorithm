@@ -1,7 +1,7 @@
 package com.mmust.tokenizer
 
+import com.mmust.token.ArithmeticOperators.*
 import com.mmust.token.NumToken
-import com.mmust.token.Operators.*
 import com.mmust.token.Parenthesis
 import com.mmust.token.Token
 import java.lang.Character.isDigit
@@ -17,7 +17,7 @@ class Tokenizer(expression: String) : Iterable<Token> {
             isDigit(c) -> NumToken(c.toString())
             c == '+' -> PLUS
             c == '-' -> MINUS
-            c == '*' -> MULTIPLY
+            c == '*' -> TIMES
             c == '/' -> DIV
             else -> throw IllegalArgumentException(String.format("Can't recognize token type, token = [%s]", c))
         }
