@@ -1,8 +1,9 @@
 package com.mmust.tokenizer
 
 import com.mmust.token.ArithmeticOperators.*
+import com.mmust.token.LeftParenthesis
 import com.mmust.token.NumToken
-import com.mmust.token.Parenthesis
+import com.mmust.token.RightParenthesis
 import com.mmust.token.Token
 import java.lang.Character.isDigit
 
@@ -12,8 +13,8 @@ class Tokenizer(expression: String) : Iterable<Token> {
 
     private fun parseToken(c: Char): Token {
         return when {
-            c == '(' -> Parenthesis.LEFT
-            c == ')' -> Parenthesis.RIGHT
+            c == '(' -> LeftParenthesis
+            c == ')' -> RightParenthesis
             isDigit(c) -> NumToken(c.toString())
             c == '+' -> PLUS
             c == '-' -> MINUS

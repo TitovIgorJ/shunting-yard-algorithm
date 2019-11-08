@@ -17,7 +17,5 @@ abstract class BaseToken internal constructor(override val rawValue: String) : T
         return rawValue.hashCode()
     }
 
-    override fun toString(): String {
-        return rawValue
-    }
+    override fun toString() = rawValue
 }

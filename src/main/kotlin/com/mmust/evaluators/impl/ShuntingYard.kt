@@ -13,7 +13,7 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
         get() = operatorStack.isNotEmpty() && operatorStack.peek() is Function
 
     private val isLeftParenthesisOnTop: Boolean
-        get() = operatorStack.isNotEmpty() && operatorStack.peek() is Parenthesis && operatorStack.peek() == Parenthesis.LEFT
+        get() = operatorStack.isNotEmpty() && operatorStack.peek() is LeftParenthesis
 
     fun doSorting(): Iterable<Token> {
         for (token in infixExpression) {
@@ -27,16 +27,13 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
                     }
                     operatorStack.push(token)
                 }
-                is Parenthesis -> {
-                    if (token == Parenthesis.LEFT) {
-                        operatorStack.push(token)
-                    } else {
-                        while (!isLeftParenthesisOnTop) {
-                            outputQueue.add(operatorStack.pop())
-                        }
-                        if (isLeftParenthesisOnTop) {
-                            operatorStack.pop()
-                        }
+                is LeftParenthesis -> operatorStack.push(token)
+                is RightParenthesis -> {
+                    while (!isLeftParenthesisOnTop) {
+                        outputQueue.add(operatorStack.pop())
+                    }
+                    if (isLeftParenthesisOnTop) {
+                        operatorStack.pop()
                     }
                 }
             }
