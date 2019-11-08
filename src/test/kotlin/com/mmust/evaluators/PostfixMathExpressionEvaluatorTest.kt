@@ -4,19 +4,15 @@ import com.mmust.evaluators.impl.StackPostfixMathExpressionEvaluator
 import com.mmust.token.NumToken
 import com.mmust.token.Operators.*
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
 class PostfixMathExpressionEvaluatorTest {
 
-    private var evaluator: PostfixEvaluator? = null
-
-    @Before
-    fun init() {
-        evaluator = StackPostfixMathExpressionEvaluator()
-    }
+    private val evaluator: PostfixEvaluator = StackPostfixMathExpressionEvaluator()
 
     @Test
+    @DisplayName("+")
     fun testAddition() {
         val simplePostfixExpr = listOf(
                 NumToken("2"),
@@ -24,7 +20,7 @@ class PostfixMathExpressionEvaluatorTest {
                 PLUS
         )
 
-        val actualResult = evaluator!!.eval(simplePostfixExpr)
+        val actualResult = evaluator.eval(simplePostfixExpr)
         val expectedResult = 5.0
 
         assertThat(actualResult)
@@ -32,6 +28,7 @@ class PostfixMathExpressionEvaluatorTest {
     }
 
     @Test
+    @DisplayName("-")
     fun testSubtract() {
         val simplePostfixExpr = listOf(
                 NumToken("5"),
@@ -39,7 +36,7 @@ class PostfixMathExpressionEvaluatorTest {
                 MINUS
         )
 
-        val actualResult = evaluator!!.eval(simplePostfixExpr)
+        val actualResult = evaluator.eval(simplePostfixExpr)
         val expectedResult = 3.0
 
         assertThat(actualResult)
@@ -47,6 +44,7 @@ class PostfixMathExpressionEvaluatorTest {
     }
 
     @Test
+    @DisplayName("*")
     fun testMultiply() {
         val simplePostfixExpr = listOf(
                 NumToken("3"),
@@ -54,7 +52,7 @@ class PostfixMathExpressionEvaluatorTest {
                 MULTIPLY
         )
 
-        val actualResult = evaluator!!.eval(simplePostfixExpr)
+        val actualResult = evaluator.eval(simplePostfixExpr)
         val expectedResult = 12.0
 
         assertThat(actualResult)
@@ -62,6 +60,7 @@ class PostfixMathExpressionEvaluatorTest {
     }
 
     @Test
+    @DisplayName("/")
     fun testDivide() {
         val simplePostfixExpr = listOf(
                 NumToken("8"),
@@ -69,7 +68,7 @@ class PostfixMathExpressionEvaluatorTest {
                 DIV
         )
 
-        val actualResult = evaluator!!.eval(simplePostfixExpr)
+        val actualResult = evaluator.eval(simplePostfixExpr)
         val expectedResult = 2.0
 
         assertThat(actualResult)
@@ -77,6 +76,7 @@ class PostfixMathExpressionEvaluatorTest {
     }
 
     @Test
+    @DisplayName("Few operations")
     fun testFewOps() {
         val simplePostfixExpr = listOf(
                 NumToken("3"),
@@ -86,7 +86,7 @@ class PostfixMathExpressionEvaluatorTest {
                 MINUS
         )
 
-        val actualResult = evaluator!!.eval(simplePostfixExpr)
+        val actualResult = evaluator.eval(simplePostfixExpr)
         val expectedResult = -17.0
 
         assertThat(actualResult)

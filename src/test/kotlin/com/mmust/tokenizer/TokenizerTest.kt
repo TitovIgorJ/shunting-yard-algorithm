@@ -5,11 +5,13 @@ import com.mmust.token.Operators.*
 import com.mmust.token.Parenthesis
 import com.mmust.token.Token
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
 class TokenizerTest {
 
     @Test
+    @DisplayName("Arithmetic Operators Only")
     fun testArithmeticOperatorsOnly() {
         val tokenizer = Tokenizer("3+4-5*2-9/8")
 
@@ -31,6 +33,7 @@ class TokenizerTest {
     }
 
     @Test
+    @DisplayName("With Parenthesis")
     fun testWithParenthesis() {
         val tokenizer = Tokenizer("3*(5-1)")
 
