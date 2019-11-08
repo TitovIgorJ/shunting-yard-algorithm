@@ -1,9 +1,12 @@
 package com.mmust;
 
-import com.mmust.token.*;
+import com.mmust.token.NumToken;
+import com.mmust.token.Parenthesis;
 import com.mmust.tokenizer.Tokenizer;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+import static com.mmust.token.Operators.*;
 
 public class TokenizerTest {
 
@@ -15,15 +18,15 @@ public class TokenizerTest {
 				.hasSize(11)
 				.containsExactly(
 						new NumToken("3"),
-						new AdditionOpToken(),
+						PLUS,
 						new NumToken("4"),
-						new SubtractOpToken(),
+						MINUS,
 						new NumToken("5"),
-						new MultiplicationOpToken(),
+						MULTIPLY,
 						new NumToken("2"),
-						new SubtractOpToken(),
+						MINUS,
 						new NumToken("9"),
-						new DivisionOpToken(),
+						DIV,
 						new NumToken("8")
 				);
 	}
@@ -36,10 +39,10 @@ public class TokenizerTest {
 				.hasSize(7)
 				.containsExactly(
 						new NumToken("3"),
-						new MultiplicationOpToken(),
+						MULTIPLY,
 						Parenthesis.LEFT,
 						new NumToken("5"),
-						new SubtractOpToken(),
+						MINUS,
 						new NumToken("1"),
 						Parenthesis.RIGHT
 				);

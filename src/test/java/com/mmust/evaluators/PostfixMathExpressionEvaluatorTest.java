@@ -1,12 +1,14 @@
 package com.mmust.evaluators;
 
 import com.mmust.evaluators.impl.StackPostfixMathExpressionEvaluator;
-import com.mmust.token.*;
+import com.mmust.token.NumToken;
+import com.mmust.token.Token;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
+import static com.mmust.token.Operators.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PostfixMathExpressionEvaluatorTest {
@@ -23,7 +25,7 @@ public class PostfixMathExpressionEvaluatorTest {
 		Iterable<Token> simplePostfixExpr = List.of(
 				new NumToken("2"),
 				new NumToken("3"),
-				new AdditionOpToken()
+				PLUS
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
@@ -38,7 +40,7 @@ public class PostfixMathExpressionEvaluatorTest {
 		Iterable<Token> simplePostfixExpr = List.of(
 				new NumToken("5"),
 				new NumToken("2"),
-				new SubtractOpToken()
+				MINUS
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
@@ -53,7 +55,7 @@ public class PostfixMathExpressionEvaluatorTest {
 		Iterable<Token> simplePostfixExpr = List.of(
 				new NumToken("3"),
 				new NumToken("4"),
-				new MultiplicationOpToken()
+				MULTIPLY
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
@@ -68,7 +70,7 @@ public class PostfixMathExpressionEvaluatorTest {
 		Iterable<Token> simplePostfixExpr = List.of(
 				new NumToken("8"),
 				new NumToken("4"),
-				new DivisionOpToken()
+				DIV
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
@@ -84,8 +86,8 @@ public class PostfixMathExpressionEvaluatorTest {
 				new NumToken("3"),
 				new NumToken("4"),
 				new NumToken("5"),
-				new MultiplicationOpToken(),
-				new SubtractOpToken()
+				MULTIPLY,
+				MINUS
 		);
 
 		double actualResult = evaluator.eval(simplePostfixExpr);
