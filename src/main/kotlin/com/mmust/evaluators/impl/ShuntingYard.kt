@@ -10,10 +10,10 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
     private val outputQueue = LinkedList<Token>()
 
     private val isFunctionOnTop: Boolean
-        get() = !operatorStack.isEmpty() && operatorStack.peek() is Function
+        get() = operatorStack.isNotEmpty() && operatorStack.peek() is Function
 
     private val isLeftParenthesisOnTop: Boolean
-        get() = !operatorStack.isEmpty() && operatorStack.peek() is Parenthesis && operatorStack.peek() == Parenthesis.LEFT
+        get() = operatorStack.isNotEmpty() && operatorStack.peek() is Parenthesis && operatorStack.peek() == Parenthesis.LEFT
 
     fun doSorting(): Iterable<Token> {
         for (token in infixExpression) {
@@ -48,20 +48,20 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
     }
 
     private fun isLeftAssociativeAndEqualPriorityOpOnTop(op: BinaryOperator): Boolean {
-        val top = operatorStack.peek()
-        if (top != null && top is BinaryOperator) {
-            val topOp = top as BinaryOperator
-            return topOp.associativity == Associativity.LEFT && op.precedence == topOp.precedence
+        if (operatorStack.isNotEmpty()) {
+            val top = operatorStack.peek()
+            if (top is BinaryOperator) {
+                return top.associativity == Associativity.LEFT && op.precedence == top.precedence
+            }
         }
         return false
     }
 
     private fun isHigherPriorityOpOnTop(op: BinaryOperator): Boolean {
-        if (!operatorStack.isEmpty()) {
+        if (operatorStack.isNotEmpty()) {
             val top = operatorStack.peek()
             if (top is BinaryOperator) {
-                val topOp = top as BinaryOperator
-                return topOp.precedence > op.precedence
+                return top.precedence > op.precedence
             }
         }
         return false
