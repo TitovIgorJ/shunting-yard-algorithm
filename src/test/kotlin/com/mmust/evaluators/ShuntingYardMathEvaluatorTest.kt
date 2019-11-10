@@ -81,4 +81,16 @@ class ShuntingYardMathEvaluatorTest {
         Assertions.assertThat(actResult)
                 .isEqualTo(expectedResult)
     }
+
+    @Test
+    @DisplayName("Bigger Numbers")
+    fun biggerNumbers() {
+        val infixExpression = "2*(12-(78-72))"
+        val expectedResult = 12.0
+
+        val actResult = mathEvaluator.eval(infixExpression)
+
+        Assertions.assertThat(actResult)
+                .isEqualTo(expectedResult)
+    }
 }

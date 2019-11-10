@@ -9,8 +9,8 @@ class ShuntingYardMathEvaluator : MathEvaluator {
     private val postfixEvaluator = StackPostfixMathExpressionEvaluator()
 
     override fun eval(infixExpression: String): Double {
-        val tokenizer = Tokenizer(infixExpression)
-        val postfixExpression = infixToPostfixParser.parse(tokenizer)
+        val tokens = Tokenizer(infixExpression).parse()
+        val postfixExpression = infixToPostfixParser.parse(tokens)
         return postfixEvaluator.eval(postfixExpression)
     }
 

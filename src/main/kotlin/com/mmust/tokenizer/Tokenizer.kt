@@ -1,42 +1,53 @@
 package com.mmust.tokenizer
 
-import com.mmust.token.ArithmeticOperators.*
-import com.mmust.token.LeftParenthesis
-import com.mmust.token.NumToken
-import com.mmust.token.RightParenthesis
-import com.mmust.token.Token
-import java.lang.Character.isDigit
+import com.mmust.token.*
 
-class Tokenizer(expression: String) : Iterable<Token> {
+class Tokenizer(expression: String) {
 
-    private val data: CharArray = expression.toCharArray()
+    private val data = expression
+    private var pos = 0
 
-    private fun parseToken(c: Char): Token {
-        return when {
-            c == '(' -> LeftParenthesis
-            c == ')' -> RightParenthesis
-            isDigit(c) -> NumToken(c.toString())
-            c == '+' -> PLUS
-            c == '-' -> MINUS
-            c == '*' -> TIMES
-            c == '/' -> DIV
-            else -> throw IllegalArgumentException(String.format("Can't recognize token type, token = [%s]", c))
-        }
+    fun parse(): List<Token> {
+
+        val result = mutableListOf<Token>()
+
+        do {
+            val c = peek()
+            val token = when {
+                c == '(' -> LeftParenthesis
+                c == ')' -> RightParenthesis
+                Character.isDigit(c) -> extractDigit()
+                c == '+' -> ArithmeticOperators.PLUS
+                c == '-' -> ArithmeticOperators.MINUS
+                c == '*' -> ArithmeticOperators.TIMES
+                c == '/' -> ArithmeticOperators.DIV
+                else -> throw IllegalArgumentException("Can't recognize token type, token = [$c]")
+            }
+            result.add(token)
+            movePos()
+        } while (hasNext())
+
+        return result
     }
 
-    override fun iterator(): Iterator<Token> {
-        return Itr()
+    private fun extractDigit(): Token {
+        var r = peek().toString()
+
+        while (oneMoreDigitPresent()) {
+            movePos()
+            r += peek()
+        }
+
+        return NumToken(r)
     }
 
-    private inner class Itr : Iterator<Token> {
-        private var pos = 0
+    private fun peek() = data[pos]
 
-        override fun hasNext(): Boolean {
-            return pos < data.size
-        }
+    private fun hasNext() = pos < data.length
 
-        override fun next(): Token {
-            return parseToken(data[pos++])
-        }
+    private fun oneMoreDigitPresent() = pos + 1 < data.length && data[pos + 1].isDigit()
+
+    private fun movePos(offset: Int = 1) {
+        pos += offset
     }
 }
