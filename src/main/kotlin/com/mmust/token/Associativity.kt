@@ -1,6 +1,6 @@
 package com.mmust.token
 
-enum class Associativity {
+internal enum class Associativity {
     RIGHT,
     LEFT
 }

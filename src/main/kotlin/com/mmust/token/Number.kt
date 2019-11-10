@@ -1,6 +1,6 @@
 package com.mmust.token
 
-interface Number {
+internal interface Number {
 
     fun doubleValue(): Double
 }

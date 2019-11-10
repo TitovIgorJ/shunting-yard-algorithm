@@ -1,6 +1,6 @@
 package com.mmust.token
 
-interface Token {
+internal interface Token {
 
     val rawValue: String
 }

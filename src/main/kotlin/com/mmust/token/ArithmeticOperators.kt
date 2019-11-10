@@ -1,6 +1,6 @@
 package com.mmust.token
 
-enum class ArithmeticOperators(
+internal enum class ArithmeticOperators(
         override val rawValue: String,
         override val precedence: Int,
         override val associativity: Associativity,

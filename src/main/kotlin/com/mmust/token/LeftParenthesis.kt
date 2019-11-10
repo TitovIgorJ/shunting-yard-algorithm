@@ -1,3 +1,3 @@
 package com.mmust.token
 
-object LeftParenthesis : BaseToken("(")
+internal object LeftParenthesis : BaseToken("(")

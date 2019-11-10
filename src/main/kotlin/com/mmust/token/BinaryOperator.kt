@@ -1,6 +1,6 @@
 package com.mmust.token
 
-interface BinaryOperator {
+internal interface BinaryOperator {
 
     val precedence: Int
 

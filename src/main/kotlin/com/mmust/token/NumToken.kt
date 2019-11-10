@@ -1,6 +1,6 @@
 package com.mmust.token
 
-class NumToken(value: String) : BaseToken(value), Number {
+internal class NumToken(value: String) : BaseToken(value), Number {
 
     constructor(num: Double) : this(num.toString())
 

@@ -1,3 +1,3 @@
 package com.mmust.token
 
-class Function(value: String) : BaseToken(value)
+internal class Function(value: String) : BaseToken(value)

@@ -2,7 +2,7 @@ package com.mmust.tokenizer
 
 import com.mmust.token.*
 
-class Tokenizer(expression: String) {
+internal class Tokenizer(expression: String) {
 
     private val data = expression
     private var pos = 0

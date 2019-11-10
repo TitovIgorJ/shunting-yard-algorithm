@@ -1,6 +1,6 @@
 package com.mmust.token
 
-abstract class BaseToken internal constructor(override val rawValue: String) : Token {
+internal abstract class BaseToken internal constructor(override val rawValue: String) : Token {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

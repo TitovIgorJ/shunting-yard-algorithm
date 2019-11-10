@@ -7,7 +7,7 @@ import com.mmust.token.Number
 import com.mmust.token.Token
 import java.util.*
 
-class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
+internal class StackPostfixMathExpressionEvaluator : PostfixEvaluator {
 
     override fun eval(postfixExpr: Iterable<Token>): Double {
         val stack = LinkedList<Token>()
