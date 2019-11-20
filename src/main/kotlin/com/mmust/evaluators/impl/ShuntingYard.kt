@@ -21,8 +21,12 @@ internal class ShuntingYard(private val infixExpression: Iterable<Token>) {
                 is NumToken -> outputQueue.add(token)
                 is Function -> operatorStack.push(token)
                 is BinaryOperator -> {
-                    val op = token as BinaryOperator
-                    while (isFunctionOnTop || isHigherPriorityOpOnTop(op) || isLeftAssociativeAndEqualPriorityOpOnTop(op) && !isLeftParenthesisOnTop) {
+                    while (
+                            isFunctionOnTop ||
+                            isHigherPriorityOpOnTop(token) ||
+                            isLeftAssociativeAndEqualPriorityOpOnTop(token) &&
+                            !isLeftParenthesisOnTop
+                    ) {
                         outputQueue.add(operatorStack.pop())
                     }
                     operatorStack.push(token)
