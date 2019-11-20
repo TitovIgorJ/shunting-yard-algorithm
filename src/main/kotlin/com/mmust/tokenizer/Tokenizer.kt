@@ -1,6 +1,7 @@
 package com.mmust.tokenizer
 
 import com.mmust.token.*
+import java.lang.Character.isDigit
 
 internal class Tokenizer(expression: String) {
 
@@ -16,11 +17,12 @@ internal class Tokenizer(expression: String) {
             val token = when {
                 c == '(' -> LeftParenthesis
                 c == ')' -> RightParenthesis
-                Character.isDigit(c) -> extractDigit()
+                isDigit(c) -> extractDigit()
                 c == '+' -> ArithmeticOperators.PLUS
                 c == '-' -> ArithmeticOperators.MINUS
                 c == '*' -> ArithmeticOperators.TIMES
                 c == '/' -> ArithmeticOperators.DIV
+                c == '^' -> ArithmeticOperators.POW
                 else -> throw IllegalArgumentException("Can't recognize token type, token = [$c]")
             }
             result.add(token)
