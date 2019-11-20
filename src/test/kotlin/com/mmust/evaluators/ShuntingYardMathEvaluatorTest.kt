@@ -93,4 +93,28 @@ class ShuntingYardMathEvaluatorTest {
         Assertions.assertThat(actResult)
                 .isEqualTo(expectedResult)
     }
+
+    @Test
+    @DisplayName("Simple Pow")
+    fun simplePow() {
+        val testExpr = "2^3"
+        val expectedResult = 8.0
+
+        val actResult = mathEvaluator.eval(testExpr)
+
+        Assertions.assertThat(actResult)
+                .isEqualTo(expectedResult)
+    }
+
+    @Test
+    @DisplayName("Few Operators With Pow")
+    fun testPow() {
+        val testExpr = "2^2*(5-3)"
+        val expectedResult = 8.0
+
+        val actResult = mathEvaluator.eval(testExpr)
+
+        Assertions.assertThat(actResult)
+                .isEqualTo(expectedResult)
+    }
 }
